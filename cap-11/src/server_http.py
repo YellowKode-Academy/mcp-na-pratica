@@ -1,5 +1,5 @@
 # src/server_http.py
-# Capitulo 9: Servidor HTTP com observabilidade completa
+# Capitulo 11: Servidor HTTP com Docker e deploy local
 # Adiciona: logs estruturados, correlation IDs, metricas Prometheus, rate limiting
 import json
 import time

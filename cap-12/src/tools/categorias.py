@@ -1,5 +1,5 @@
 # src/tools/categorias.py
-# Capitulo 4: Dados de categorias KDP (mesmo codigo do cap-03)
+# Capitulo 12: Dados de categorias KDP (mesmo codigo do cap-03)
 
 CATEGORIAS_BSR = {
     "romantasy": {

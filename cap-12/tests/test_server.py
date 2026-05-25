@@ -1,5 +1,5 @@
 # tests/test_server.py
-# Capitulo 10: Integration tests dos endpoints HTTP e middleware de autenticacao
+# Capitulo 12: Integration tests dos endpoints HTTP e middleware de autenticacao
 import os
 
 import pytest

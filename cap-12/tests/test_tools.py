@@ -1,5 +1,5 @@
 # tests/test_tools.py
-# Capitulo 10: Unit tests das tools em isolamento
+# Capitulo 12: Unit tests das tools em isolamento
 import pytest
 from unittest.mock import AsyncMock, patch
 

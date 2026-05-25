@@ -1,5 +1,5 @@
 # src/logging_config.py
-# Capitulo 9: Configuracao de logs estruturados com structlog
+# Capitulo 12: Configuracao de logs estruturados com structlog
 import logging
 import os
 

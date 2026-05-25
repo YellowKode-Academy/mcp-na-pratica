@@ -1,5 +1,5 @@
 # tests/test_protocol.py
-# Capitulo 10: E2E tests do protocolo MCP com ClientSession real
+# Capitulo 12: E2E tests do protocolo MCP com ClientSession real
 # REQUISITO: servidor rodando em localhost:8000
 # Pule esses testes se TEST_MCP_TOKEN nao estiver configurado
 import json

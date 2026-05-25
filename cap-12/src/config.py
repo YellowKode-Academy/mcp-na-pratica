@@ -1,5 +1,5 @@
 # src/config.py
-# Capitulo 6: Configuracao com variaveis JWT
+# Capitulo 12: Configuracao com variaveis JWT
 import os
 
 from dotenv import load_dotenv

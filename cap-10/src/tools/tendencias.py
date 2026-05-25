@@ -1,5 +1,5 @@
 # src/tools/tendencias.py
-# Capitulo 4: Ferramentas de tendencias (mesmo codigo do cap-03)
+# Capitulo 10: Ferramentas de tendencias (mesmo codigo do cap-03)
 import asyncio
 
 import httpx

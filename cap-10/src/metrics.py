@@ -1,12 +1,9 @@
 # src/metrics.py
-# Capitulo 9: Metricas Prometheus para o servidor MCP
-from fastapi.responses import Response
+# Capitulo 10: Metricas Prometheus para o servidor MCP
 from prometheus_client import (
-    CONTENT_TYPE_LATEST,
     Counter,
     Gauge,
     Histogram,
-    generate_latest,
 )
 
 # Total de chamadas a tools MCP, por tool e status
@@ -43,8 +40,3 @@ HTTP_REQUESTS = Counter(
     "Total de requests HTTP ao servidor",
     ["method", "path", "status_code"]
 )
-
-
-async def metrics_endpoint():
-    """Endpoint Prometheus para scraping de metricas."""
-    return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)

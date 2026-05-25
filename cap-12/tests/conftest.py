@@ -1,5 +1,5 @@
 # tests/conftest.py
-# Capitulo 10: Fixtures compartilhadas entre os testes
+# Capitulo 12: Fixtures compartilhadas entre os testes
 import os
 
 import pytest

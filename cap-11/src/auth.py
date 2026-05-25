@@ -1,5 +1,5 @@
 # src/auth.py
-# Capitulo 6: Autenticacao JWT para o servidor MCP
+# Capitulo 11: Autenticacao JWT para o servidor MCP
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 

@@ -1,5 +1,5 @@
 # src/config.py
-# Capitulo 4: Configuracao via variaveis de ambiente
+# Capitulo 5: Configuracao via variaveis de ambiente
 import os
 from dotenv import load_dotenv
 
