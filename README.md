@@ -47,6 +47,15 @@ PROMETHEUS_PORT=9090          # opcional, padrão 9090
 LANGCHAIN_API_KEY=ls__...     # opcional, para LangSmith
 ```
 
+## Onde obter as chaves
+
+| Variável | Onde criar | Plano gratuito |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys) | Não (pay-as-you-go) |
+| `SERPAPI_KEY` | [serpapi.com/dashboard](https://serpapi.com/dashboard) | Sim (100 req/mês) |
+| `JWT_SECRET` | Gere localmente: `python -c "import secrets; print(secrets.token_hex(32))"` | — |
+| `LANGCHAIN_API_KEY` | [smith.langchain.com](https://smith.langchain.com) → Settings → API Keys | Sim |
+
 ## Estrutura por capítulo
 
 | Capítulo | Diretório | O que você constrói |
