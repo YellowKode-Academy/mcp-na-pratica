@@ -215,7 +215,9 @@ def planejar_serie(genero: str, num_livros: int = 3) -> str:
 # FASTAPI APP + MIDDLEWARES
 # ============================================================
 
-app = server.get_application()
+from fastapi import FastAPI as _FastAPI
+_mcp_app = server.sse_app()
+app = _FastAPI(title="Market Intelligence MCP Server")
 
 ROTAS_PUBLICAS = {"/health", "/ready", "/docs", "/openapi.json", "/redoc", "/metrics"}
 
@@ -310,6 +312,8 @@ async def metrics():
     """Endpoint Prometheus para scraping de metricas."""
     return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
+
+app.mount("/", _mcp_app)
 
 if __name__ == "__main__":
     import uvicorn

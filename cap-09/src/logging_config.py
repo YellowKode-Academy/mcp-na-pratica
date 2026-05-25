@@ -34,18 +34,18 @@ def configurar_logging(nivel: str = "INFO", formato: str = "json") -> None:
         # JSON para producao
         processadores_compartilhados.append(structlog.processors.JSONRenderer())
 
+    # Configura o logging padrao do Python antes do structlog
+    logging.basicConfig(
+        format="%(message)s",
+        level=nivel_numerico,
+    )
+
     structlog.configure(
         processors=processadores_compartilhados,
         wrapper_class=structlog.make_filtering_bound_logger(nivel_numerico),
         context_class=dict,
-        logger_factory=structlog.PrintLoggerFactory(),
+        logger_factory=structlog.stdlib.LoggerFactory(),
         cache_logger_on_first_use=True,
-    )
-
-    # Configura o logging padrao do Python para capturar logs de dependencias
-    logging.basicConfig(
-        format="%(message)s",
-        level=nivel_numerico,
     )
 
 

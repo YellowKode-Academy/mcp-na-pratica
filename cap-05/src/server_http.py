@@ -218,7 +218,9 @@ Planeje uma serie de {num_livros} livros no genero: **{genero}**
 # FASTAPI APP -- deve ser criado APOS registrar tools/resources/prompts
 # ============================================================
 
-app = server.get_application()
+from fastapi import FastAPI as _FastAPI
+_mcp_app = server.sse_app()
+app = _FastAPI(title="Market Intelligence MCP Server")
 
 
 @app.get("/health")
@@ -249,6 +251,8 @@ async def readiness_check():
 # Versao dual: stdio ou HTTP/SSE
 # python src/server_http.py       -> stdio (para Claude Desktop como subprocesso)
 # python src/server_http.py http  -> HTTP/SSE em :8000
+app.mount("/", _mcp_app)
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == "http":

@@ -173,7 +173,9 @@ def planejar_serie(genero: str, num_livros: int = 3) -> str:
 # FASTAPI APP
 # ============================================================
 
-app = server.get_application()
+from fastapi import FastAPI as _FastAPI
+_mcp_app = server.sse_app()
+app = _FastAPI(title="Market Intelligence MCP Server")
 
 # Rotas que nao precisam de autenticacao
 ROTAS_PUBLICAS = {"/health", "/ready", "/docs", "/openapi.json", "/redoc"}
@@ -230,6 +232,8 @@ async def readiness_check():
         status_code=200 if all_ready else 503
     )
 
+
+app.mount("/", _mcp_app)
 
 if __name__ == "__main__":
     import uvicorn

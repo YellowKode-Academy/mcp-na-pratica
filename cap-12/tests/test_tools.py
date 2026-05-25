@@ -11,8 +11,8 @@ class TestBuscarTendencias:
             {"titulo": "Romantasy explode nas vendas KDP", "snippet": "BookTok...", "link": "http://ex.com"}
         ]
 
-        with patch("src.tools.tendencias.SERPAPI_KEY", "fake_key"), \
-             patch("src.tools.tendencias.buscar_tendencias_serpapi",
+        with patch("src.server_http.SERPAPI_KEY", "fake_key"), \
+             patch("src.server_http.buscar_tendencias_serpapi",
                    AsyncMock(return_value=resultados_mockados)):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("romantasy", 2)
@@ -22,8 +22,8 @@ class TestBuscarTendencias:
 
     async def test_fallback_quando_serpapi_falha(self):
         """Quando SerpAPI falha, retorna dados locais sem propagar o erro."""
-        with patch("src.tools.tendencias.SERPAPI_KEY", "fake_key"), \
-             patch("src.tools.tendencias.buscar_tendencias_serpapi",
+        with patch("src.server_http.SERPAPI_KEY", "fake_key"), \
+             patch("src.server_http.buscar_tendencias_serpapi",
                    AsyncMock(side_effect=Exception("Connection error"))):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("IA", 3)
@@ -32,7 +32,7 @@ class TestBuscarTendencias:
 
     async def test_limite_maximo_10(self):
         """O limite e sempre no maximo 10, mesmo se o usuario pedir mais."""
-        with patch("src.tools.tendencias.SERPAPI_KEY", ""):
+        with patch("src.server_http.SERPAPI_KEY", ""):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("IA", 50)
 
@@ -41,7 +41,7 @@ class TestBuscarTendencias:
 
     async def test_limite_minimo_1(self):
         """O limite e sempre no minimo 1."""
-        with patch("src.tools.tendencias.SERPAPI_KEY", ""):
+        with patch("src.server_http.SERPAPI_KEY", ""):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("IA", 0)
 
@@ -50,7 +50,7 @@ class TestBuscarTendencias:
 
     async def test_area_desconhecida_retorna_mensagem_util(self):
         """Para areas desconhecidas, retorna mensagem clara."""
-        with patch("src.tools.tendencias.SERPAPI_KEY", ""):
+        with patch("src.server_http.SERPAPI_KEY", ""):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("xyzabc123")
 
@@ -58,7 +58,7 @@ class TestBuscarTendencias:
 
     async def test_alias_ai_mapeia_para_ia(self):
         """'AI' em ingles deve mapear para o dataset 'IA' em portugues."""
-        with patch("src.tools.tendencias.SERPAPI_KEY", ""):
+        with patch("src.server_http.SERPAPI_KEY", ""):
             from src.server_http import buscar_tendencias
             resultado = await buscar_tendencias("AI", 3)
 
