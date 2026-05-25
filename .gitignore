@@ -1,0 +1,42 @@
+# Variaveis de ambiente -- nunca commitadas
+.env
+.env.docker
+.env.local
+.env.*.local
+
+# Ambiente virtual Python
+.venv
+venv
+env
+ENV
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribuicao e packaging
+dist/
+build/
+*.egg-info/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db

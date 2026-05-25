@@ -1,0 +1,28 @@
+# docker-compose.yml
+# Capitulo 11: Desenvolvimento local com hot-reload
+# Uso: docker compose up
+# O volume mount faz o servidor reiniciar automaticamente ao mudar o codigo
+version: "3.9"
+
+services:
+  mcp-server:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Lidos do .env local via shell export ou docker compose --env-file
+      - JWT_SECRET=${JWT_SECRET}
+      - SERPAPI_KEY=${SERPAPI_KEY}
+      - LOG_FORMAT=console
+      - LOG_LEVEL=DEBUG
+    volumes:
+      # Monta o codigo local como volume para hot-reload
+      - ./src:/app/src
+    # Hot-reload com --reload
+    command: uvicorn src.server_http:app --host 0.0.0.0 --port 8000 --reload
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped

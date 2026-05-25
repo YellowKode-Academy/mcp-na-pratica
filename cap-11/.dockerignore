@@ -1,0 +1,39 @@
+# Arquivos que NAO devem entrar na imagem Docker
+# .env contem chaves de API -- nunca deve estar na imagem
+.env
+.env.docker
+.env.local
+.env.example
+
+# Ambiente virtual Python
+.venv
+venv
+
+# Cache Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Testes e configuracao de testes (nao necessarios em producao)
+tests/
+pytest.ini
+.coverage
+htmlcov/
+
+# Git
+.git
+.gitignore
+.github
+
+# Scripts de desenvolvimento
+scripts/
+
+# Documentacao
+*.md
+docs/
+
+# IDEs
+.vscode
+.idea
+*.swp

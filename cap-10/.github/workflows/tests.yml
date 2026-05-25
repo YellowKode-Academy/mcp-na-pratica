@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        cache: "pip"
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run unit and integration tests
+      env:
+        JWT_SECRET: "chave_de_teste_ci_cd_pipeline_apenas"
+        LOG_FORMAT: "console"
+        LOG_LEVEL: "WARNING"
+      run: pytest tests/test_tools.py tests/test_server.py -v --tb=short
+
+    - name: Run E2E tests (requires TEST_MCP_TOKEN)
+      env:
+        JWT_SECRET: "chave_de_teste_ci_cd_pipeline_apenas"
+        TEST_MCP_TOKEN: ${{ secrets.TEST_MCP_TOKEN }}
+        MCP_SERVER_URL: "http://localhost:8000/sse"
+      run: pytest tests/test_protocol.py -v --tb=short
+      # E2E tests sao pulados automaticamente se TEST_MCP_TOKEN nao estiver configurado
