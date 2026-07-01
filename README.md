@@ -1,4 +1,11 @@
-<p align="center">
+﻿<p align="center">
+
+[![Capa do Livro](cover.jpg)](https://www.amazon.com.br/dp/B0GX32HTH8)
+
+> **[Disponivel na Amazon.com.br](https://www.amazon.com.br/dp/B0GX32HTH8)** — R$24,97
+
+---
+
   <img src="capa.jpg" alt="MCP na Prática com Python" width="320"/>
 </p>
 
